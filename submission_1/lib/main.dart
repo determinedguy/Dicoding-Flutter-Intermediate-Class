@@ -1,9 +1,7 @@
-import 'package:submission_1/data/model/article.dart';
-import 'package:submission_1/ui/article_detail_page.dart';
-import 'package:submission_1/ui/article_web_view.dart';
-import 'package:submission_1/ui/home_page.dart';
-import 'package:submission_1/common/styles.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:submission_1/article.dart';
+import 'package:submission_1/detail_page.dart';
+import 'package:submission_1/list_page.dart';
+import 'package:submission_1/styles.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,10 +23,6 @@ class MyApp extends StatelessWidget {
           textTheme: myTextTheme.apply(bodyColor: Colors.black),
           elevation: 0,
         ),
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          selectedItemColor: secondaryColor,
-          unselectedItemColor: Colors.grey,
-        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             primary: secondaryColor,
@@ -41,10 +35,10 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: HomePage.routeName,
+      initialRoute: RestaurantListPage.routeName,
       routes: {
-        HomePage.routeName: (context) => HomePage(),
-        ArticleDetailPage.routeName: (context) => ArticleDetailPage(
+        RestaurantListPage.routeName: (context) => RestaurantListPage(),
+        RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
               article: ModalRoute.of(context)?.settings.arguments as Article,
             ),
         ArticleWebView.routeName: (context) => ArticleWebView(

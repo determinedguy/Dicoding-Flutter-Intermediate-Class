@@ -1,19 +1,21 @@
-import 'package:submission_1/data/model/article.dart';
-import 'package:submission_1/ui/article_web_view.dart';
+import 'package:submission_1/article.dart';
+import 'package:submission_1/data/model/restaurant.dart';
+import 'package:submission_1/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
-class ArticleDetailPage extends StatelessWidget {
-  static const routeName = '/article_detail';
+class RestaurantDetailPage extends StatelessWidget {
+  static const routeName = '/restaurant_detail';
 
   final Article article;
 
-  const ArticleDetailPage({required this.article});
+  const RestaurantDetailPage({required this.article});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('News App'),
+        title: Text('Restaurant'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -63,6 +65,23 @@ class ArticleDetailPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ArticleWebView extends StatelessWidget {
+  static const routeName = '/article_web';
+
+  final String url;
+
+  const ArticleWebView({required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScaffold(
+      body: WebView(
+        initialUrl: url,
       ),
     );
   }
