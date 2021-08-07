@@ -1,4 +1,4 @@
-import 'package:submission_1/article.dart';
+import 'package:submission_1/data/model/restaurant.dart';
 import 'package:submission_1/detail_page.dart';
 import 'package:submission_1/list_page.dart';
 import 'package:submission_1/styles.dart';
@@ -39,10 +39,7 @@ class MyApp extends StatelessWidget {
       routes: {
         RestaurantListPage.routeName: (context) => RestaurantListPage(),
         RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
-              article: ModalRoute.of(context)?.settings.arguments as Article,
-            ),
-        ArticleWebView.routeName: (context) => ArticleWebView(
-              url: ModalRoute.of(context)?.settings.arguments as String,
+              restaurant: ModalRoute.of(context)?.settings.arguments as Restaurant,
             ),
       },
     );

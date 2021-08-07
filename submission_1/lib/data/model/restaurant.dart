@@ -9,8 +9,6 @@ class Restaurant {
     required this.city,
     required this.rating,
     required this.menus,
-    //required this.foods,
-    //required this.drinks,
   });
 
   late String id;
@@ -20,8 +18,6 @@ class Restaurant {
   late String city;
   late double rating;
   late var menus;
-  //late List<String> foods;
-  //late List<String> drinks;  
 
   Restaurant.fromJson(Map<String, dynamic> restaurant) {
     id = restaurant['id'];
@@ -31,8 +27,45 @@ class Restaurant {
     city = restaurant['city'];
     rating = restaurant['rating'];
     menus = restaurant['menus'];
-    //foods = List<String>.from(restaurant['menus']['foods'].map((x) => x));
-    //drinks = List<String>.from(restaurant['menus']['drinks'].map((x) => x));
+  }
+}
+
+class Menus {
+  Menus({
+    required this.foods,
+    required this.drinks,
+  });
+
+  late List<Foods> foods;
+  late List<Drinks> drinks;
+
+  Menus.fromJson(Map<String, dynamic> menus) {
+    foods = menus['foods'];
+    drinks = menus['drinks'];
+  }
+}
+
+class Foods {
+  Foods({
+    required this.name,
+  });
+
+  late String name;
+
+  Foods.fromJson(Map<String, dynamic> foods) {
+    name = foods['name'];
+  }
+}
+
+class Drinks {
+  Drinks({
+    required this.name,
+  });
+
+  late String name;
+
+  Drinks.fromJson(Map<String, dynamic> drinks) {
+    name = drinks['name'];
   }
 }
 
