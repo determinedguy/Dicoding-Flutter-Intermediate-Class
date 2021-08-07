@@ -1,16 +1,6 @@
 import 'dart:convert';
 
 class Restaurant {
-  late String id;
-  late String name;
-  late String description;
-  late String pictureId;
-  late String city;
-  late double rating;
-  late List<String> foods;
-  late List<String> drinks;
-  late String content;
-
   Restaurant({
     required this.id,
     required this.name,
@@ -18,10 +8,20 @@ class Restaurant {
     required this.pictureId,
     required this.city,
     required this.rating,
-    required this.foods,
-    required this.drinks,
-    required this.content,
+    required this.menus,
+    //required this.foods,
+    //required this.drinks,
   });
+
+  late String id;
+  late String name;
+  late String description;
+  late String pictureId;
+  late String city;
+  late double rating;
+  late var menus;
+  //late List<String> foods;
+  //late List<String> drinks;  
 
   Restaurant.fromJson(Map<String, dynamic> restaurant) {
     id = restaurant['id'];
@@ -30,9 +30,9 @@ class Restaurant {
     pictureId = restaurant['pictureId'];
     city = restaurant['city'];
     rating = restaurant['rating'];
-    foods = List<String>.from(restaurant["foods"].map((x) => x));
-    drinks = List<String>.from(restaurant["drinks"].map((x) => x));
-    content = restaurant['content'];
+    menus = restaurant['menus'];
+    //foods = List<String>.from(restaurant['menus']['foods'].map((x) => x));
+    //drinks = List<String>.from(restaurant['menus']['drinks'].map((x) => x));
   }
 }
 
@@ -40,7 +40,8 @@ List<Restaurant> parseRestaurants(String? json) {
   if (json == null) {
     return [];
   }
-
-  final List parsed = jsonDecode(json);
+  
+  final Map<String, dynamic> jsonRaw = jsonDecode(json);
+  final List parsed = jsonRaw['restaurants'];
   return parsed.map((json) => Restaurant.fromJson(json)).toList();
 }
