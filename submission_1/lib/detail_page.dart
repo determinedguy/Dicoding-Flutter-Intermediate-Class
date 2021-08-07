@@ -24,10 +24,42 @@ class RestaurantDetailPage extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [                  
+                children: [
                   Text(
                     restaurant.name,
                     style: Theme.of(context).textTheme.headline6,
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.location_pin,
+                        color: Colors.black26,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          'Lokasi: ${restaurant.city}',
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        color: Colors.black26,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          'Rating: ${restaurant.rating}',
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                      ),
+                    ],
                   ),
                   Divider(color: Colors.grey),
                   Text(
@@ -35,16 +67,6 @@ class RestaurantDetailPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Divider(color: Colors.grey),
-                  Text(
-                    'Lokasi: ${restaurant.city}',
-                    style: Theme.of(context).textTheme.caption,
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Rating: ${restaurant.rating}',
-                    style: Theme.of(context).textTheme.caption,
-                  ),
-                  SizedBox(height: 10),
                   // Cara masukkin menu gimana euy?
                   /*
                   ElevatedButton(

@@ -43,7 +43,15 @@ class RestaurantListPage extends StatelessWidget {
       title: Text(
         restaurant.name,
       ),
-      subtitle: Text(restaurant.city),
+      subtitle: Row(
+                    children: [
+                      Text(restaurant.city + " - " + '${restaurant.rating}'),
+                      const Icon(
+                        Icons.star,
+                        color: Colors.black26,
+                      ),
+                    ],
+                  ),
       onTap: () {
         Navigator.pushNamed(context, RestaurantDetailPage.routeName,
             arguments: restaurant);
