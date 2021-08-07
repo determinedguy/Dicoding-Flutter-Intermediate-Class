@@ -24,32 +24,28 @@ class RestaurantDetailPage extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    restaurant.description,
-                    style: Theme.of(context).textTheme.bodyText2,
-                  ),
-                  Divider(color: Colors.grey),
+                children: [                  
                   Text(
                     restaurant.name,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   Divider(color: Colors.grey),
                   Text(
-                    'Date: ${article.publishedAt}',
-                    style: Theme.of(context).textTheme.caption,
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Author: ${article.author}',
-                    style: Theme.of(context).textTheme.caption,
+                    restaurant.description,
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Divider(color: Colors.grey),
                   Text(
-                    article.content,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    'Lokasi: ${restaurant.city}',
+                    style: Theme.of(context).textTheme.caption,
                   ),
                   SizedBox(height: 10),
+                  Text(
+                    'Rating: ${restaurant.rating}',
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                  SizedBox(height: 10),
+                  // Cara masukkin menu gimana euy?
                   /*
                   ElevatedButton(
                     child: Text('Read more'),
