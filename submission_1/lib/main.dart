@@ -1,4 +1,5 @@
 import 'package:submission_1/data/model/restaurant.dart';
+import 'package:submission_1/splashscreen.dart';
 import 'package:submission_1/detail_page.dart';
 import 'package:submission_1/list_page.dart';
 import 'package:submission_1/styles.dart';
@@ -35,8 +36,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: RestaurantListPage.routeName,
+      initialRoute: SplashScreen.routeName,
       routes: {
+        SplashScreen.routeName: (context) => SplashScreen(),
         RestaurantListPage.routeName: (context) => RestaurantListPage(),
         RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
               restaurant: ModalRoute.of(context)?.settings.arguments as Restaurant,
