@@ -1,8 +1,8 @@
 import 'package:submission_1/data/model/restaurant.dart';
-import 'package:submission_1/splashscreen.dart';
-import 'package:submission_1/detail_page.dart';
-import 'package:submission_1/list_page.dart';
-import 'package:submission_1/styles.dart';
+import 'package:submission_1/screen/splashscreen.dart';
+import 'package:submission_1/screen/detail_page.dart';
+import 'package:submission_1/screen/list_page.dart';
+import 'package:submission_1/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 void main() {
