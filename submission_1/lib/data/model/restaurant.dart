@@ -16,7 +16,7 @@ class Restaurant {
   late String description;
   late String pictureId;
   late String city;
-  late double rating;
+  late num rating;
   late Map<String, dynamic> menus;
 
   Restaurant.fromJson(Map<String, dynamic> restaurant) {
