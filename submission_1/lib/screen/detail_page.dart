@@ -62,7 +62,7 @@ class RestaurantDetailPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: Text(
-                          'Rating: ${restaurant.rating}',
+                          'Rating: ${restaurant.rating.toString()}',
                           style: Theme.of(context).textTheme.caption,
                         ),
                       ),

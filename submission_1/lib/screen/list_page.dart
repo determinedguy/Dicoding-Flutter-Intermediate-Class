@@ -45,7 +45,7 @@ class RestaurantListPage extends StatelessWidget {
       ),
       subtitle: Row(
                     children: [
-                      Text(restaurant.city + " - " + '${restaurant.rating}'),
+                      Text(restaurant.city + " - " + '${restaurant.rating.toString()}'),
                       const Icon(
                         Icons.star,
                         color: Colors.black26,
