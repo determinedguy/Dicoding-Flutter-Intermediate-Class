@@ -16,7 +16,7 @@ class _SplashScreen extends State<SplashScreen>{
     startSplashScreen();
   }
  
-  startSplashScreen () async {
+  startSplashScreen () {
     var duration = const Duration(seconds: 3);
     return Timer(duration, (){
       Navigator.pushReplacementNamed(context, RestaurantListPage.routeName);
