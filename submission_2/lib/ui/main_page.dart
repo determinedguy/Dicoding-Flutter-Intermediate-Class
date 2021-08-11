@@ -4,16 +4,29 @@ import 'package:submission_2/widgets/card_restaurant.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-class RestaurantListPage extends StatelessWidget {
+class RestaurantListPage extends StatefulWidget {
   static const routeName = '/restaurant_list';
+
+  @override
+  _RestaurantListPageState createState() => _RestaurantListPageState();
+}
+
+class _RestaurantListPageState extends State<RestaurantListPage> {
+  final TextEditingController _filter = new TextEditingController();
+  Icon _searchIcon = new Icon(Icons.search);
+  Widget _appBarTitle = new Text('Restaurant');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Restaurant',
-        ),
+        title: _appBarTitle,
+        actions: <Widget>[
+          IconButton(
+            onPressed: _searchPressed,
+            icon: _searchIcon,
+          ),
+        ],
       ),
       body: _buildRestaurantItem(context),
     );
@@ -45,5 +58,25 @@ class RestaurantListPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void _searchPressed() {
+    setState(() {
+      if (this._searchIcon.icon == Icons.search) {
+        this._searchIcon = new Icon(Icons.close);
+        this._appBarTitle = new TextField(
+          controller: _filter,
+          decoration: new InputDecoration(
+            prefixIcon: new Icon(Icons.search),
+            hintText: 'Search...'
+          ),
+        );
+      } else {
+        this._searchIcon = new Icon(Icons.search);
+        this._appBarTitle = new Text('Restaurant');
+        //filteredNames = names;
+        _filter.clear();
+      }
+    });
   }
 }

@@ -1,7 +1,7 @@
 import 'package:submission_2/data/model/restaurant.dart';
 import 'package:submission_2/ui/splashscreen.dart';
 import 'package:submission_2/ui/detail_page.dart';
-import 'package:submission_2/ui/list_page.dart';
+import 'package:submission_2/ui/main_page.dart';
 import 'package:submission_2/common/styles.dart';
 import 'package:flutter/material.dart';
 
