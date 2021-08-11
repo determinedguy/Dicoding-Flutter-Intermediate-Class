@@ -31,6 +31,9 @@ dependencies:
   # The following adds the Google Fonts font to your application.
   google_fonts: ^2.0.0
 
+  # The following adds the HTTP module to your application.
+  http: ^0.13.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
