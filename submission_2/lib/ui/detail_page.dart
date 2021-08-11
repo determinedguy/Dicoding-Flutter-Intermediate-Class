@@ -95,7 +95,7 @@ class RestaurantDetailPage extends StatelessWidget {
                     height: 100,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: restaurant.foods.length,
+                      itemCount: restaurant.menus.foods.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(4.0),
@@ -128,7 +128,7 @@ class RestaurantDetailPage extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Center(
-                                    child: Text(restaurant.foods[index].name),
+                                    child: Text(restaurant.menus.foods[index].name),
                                   ),
                                 ),
                               ),
@@ -160,7 +160,7 @@ class RestaurantDetailPage extends StatelessWidget {
                     height: 100,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: restaurant.drinks.length,
+                      itemCount: restaurant.menus.drinks.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: const EdgeInsets.all(4.0),
@@ -193,7 +193,7 @@ class RestaurantDetailPage extends StatelessWidget {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Center(
-                                    child: Text(restaurant.drinks[index].name),
+                                    child: Text(restaurant.menus.drinks[index].name),
                                   ),
                                 ),
                               ),

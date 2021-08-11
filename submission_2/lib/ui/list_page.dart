@@ -1,9 +1,24 @@
+import 'package:submission_2/data/api/api_service.dart';
+import 'package:submission_2/widgets/card_restaurant.dart';
 import 'package:submission_2/data/model/restaurant.dart';
-import 'package:submission_2/ui/detail_page.dart';
 import 'package:flutter/material.dart';
 
-class RestaurantListPage extends StatelessWidget {
+
+class RestaurantListPage extends StatefulWidget {
   static const routeName = '/restaurant_list';
+
+  @override
+  _RestaurantListPageState createState() => _RestaurantListPageState();
+}
+
+class _RestaurantListPageState extends State<RestaurantListPage> {
+  late Future<RestaurantList> _restaurantList;
+
+  @override
+  void initState() {
+    super.initState();
+    _restaurantList = ApiService().restaurantList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,49 +28,30 @@ class RestaurantListPage extends StatelessWidget {
           'Restaurant',
         ),
       ),
-      body: FutureBuilder<String>(
-        future:
-            DefaultAssetBundle.of(context).loadString('assets/local_restaurant.json'),
-        builder: (context, snapshot) {
-          final List<Restaurant> restaurants = parseRestaurants(snapshot.data);
-          return ListView.builder(
-            itemCount: restaurants.length,
-            itemBuilder: (context, index) {
-              return _buildRestaurantItem(context, restaurants[index]);
-            },
-          );
+      body: FutureBuilder(
+        future: _restaurantList,
+        builder: (context, AsyncSnapshot<RestaurantList> snapshot) {
+          var state = snapshot.connectionState;
+          if (state != ConnectionState.done) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: snapshot.data?.count,
+                itemBuilder: (context, index) {
+                  var restaurant = snapshot.data?.restaurants[index];
+                  return CardRestaurant(restaurant: restaurant!);
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Center(child: Text(snapshot.error.toString()));
+            } else {
+              return Text('');
+            }
+          }
         },
       ),
-    );
-  }
-
-  Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
-    return ListTile(
-      contentPadding:
-          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      leading: Hero(
-        tag: restaurant.pictureId,
-        child: Image.network(
-          restaurant.pictureId,
-          width: 100,
-        ),
-      ),
-      title: Text(
-        restaurant.name,
-      ),
-      subtitle: Row(
-                    children: [
-                      Text(restaurant.city + " - " + '${restaurant.rating.toString()}'),
-                      const Icon(
-                        Icons.star,
-                        color: Colors.black26,
-                      ),
-                    ],
-                  ),
-      onTap: () {
-        Navigator.pushNamed(context, RestaurantDetailPage.routeName,
-            arguments: restaurant);
-      },
     );
   }
 }
