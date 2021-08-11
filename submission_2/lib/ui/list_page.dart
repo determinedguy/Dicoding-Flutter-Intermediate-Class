@@ -1,5 +1,5 @@
 import 'package:submission_2/data/model/restaurant.dart';
-import 'package:submission_2/screen/detail_page.dart';
+import 'package:submission_2/ui/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class RestaurantListPage extends StatelessWidget {
