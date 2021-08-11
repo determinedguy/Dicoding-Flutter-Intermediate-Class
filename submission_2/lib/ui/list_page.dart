@@ -21,7 +21,7 @@ class RestaurantListPage extends StatelessWidget {
 
   Widget _buildRestaurantItem(BuildContext context) {
     return ChangeNotifierProvider<RestaurantProvider>(
-      create: (_) => RestaurantProvider(apiService: ApiService()),
+      create: (_) => RestaurantProvider(apiService: ApiService(), type: 'list', restaurant: null),
       child: Consumer<RestaurantProvider>(
         builder: (context, state, _) {
           if (state.state == ResultState.Loading) {
@@ -29,9 +29,9 @@ class RestaurantListPage extends StatelessWidget {
           } else if (state.state == ResultState.HasData) {
             return ListView.builder(
               shrinkWrap: true,
-              itemCount: state.result.count,
+              itemCount: state.resultList.count,
               itemBuilder: (context, index) {
-                var restaurant = state.result.restaurants[index];
+                var restaurant = state.resultList.restaurants[index];
                 return CardRestaurant(restaurant: restaurant);
               },
             );
