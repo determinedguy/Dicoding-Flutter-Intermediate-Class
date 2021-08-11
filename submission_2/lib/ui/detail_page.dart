@@ -75,6 +75,7 @@ class RestaurantDetailPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                   Divider(color: Colors.grey),
+                  /*
                   // Bagian Menu Makanan
                   Row(
                     children: [
@@ -203,6 +204,7 @@ class RestaurantDetailPage extends StatelessWidget {
                       },
                     ),
                   ),
+                  */
                 ],
               ),
             ),

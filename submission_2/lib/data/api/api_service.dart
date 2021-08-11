@@ -10,7 +10,7 @@ class ApiService {
     if (response.statusCode == 200) {
       return RestaurantList.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load restaurant list.');
+      throw Exception('Failed to load the restaurant list.');
     }
   }
 }

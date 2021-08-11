@@ -34,6 +34,9 @@ dependencies:
   # The following adds the HTTP module to your application.
   http: ^0.13.3
 
+  # The following adds the provider module to your application.
+  provider: ^5.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
