@@ -12,27 +12,23 @@ class RestaurantProvider extends ChangeNotifier {
  
   RestaurantProvider({required this.apiService, required this.type, required this.restaurant}) {
     if (type == 'list') {
-      _fetchAllRestaurant();
+      fetchAllRestaurant();
     } else if (type == 'detail') {
-      _fetchRestaurantDetail(restaurant!);
+      fetchRestaurantDetail(restaurant!);
     }
   }
  
-  late RestaurantList _restaurantResult;
-  late RestaurantDetail _restaurantDetail;
-  late RestaurantSearch _restaurantSearch;
+  late dynamic _restaurantResult;
   String _message = '';
   late ResultState _state;
  
   String get message => _message;
  
-  RestaurantList get resultList => _restaurantResult;
-  RestaurantDetail get resultDetail => _restaurantDetail;
-  RestaurantSearch get resultSearch => _restaurantSearch;
+  dynamic get result => _restaurantResult;
  
   ResultState get state => _state;
  
-  Future<dynamic> _fetchAllRestaurant() async {
+  Future<dynamic> fetchAllRestaurant() async {
     try {
       _state = ResultState.Loading;
       notifyListeners();
@@ -53,14 +49,14 @@ class RestaurantProvider extends ChangeNotifier {
     }
   }
 
-  Future<dynamic> _fetchRestaurantDetail(Restaurant restaurant) async {
+  Future<dynamic> fetchRestaurantDetail(Restaurant restaurant) async {
     try {
       _state = ResultState.Loading;
       notifyListeners();
       final restaurantDetail = await apiService.restaurantDetail(restaurant.id);
       _state = ResultState.HasData;
       notifyListeners();
-      return _restaurantDetail = restaurantDetail;
+      return _restaurantResult = restaurantDetail;
     } catch (e) {
       _state = ResultState.Error;
       notifyListeners();
@@ -80,7 +76,7 @@ class RestaurantProvider extends ChangeNotifier {
       } else {
         _state = ResultState.HasData;
         notifyListeners();
-        return _restaurantSearch = restaurantSearch;
+        return _restaurantResult = restaurantSearch;
       }
     } catch (e) {
       _state = ResultState.Error;

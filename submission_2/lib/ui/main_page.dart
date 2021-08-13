@@ -15,6 +15,7 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
   final TextEditingController _filter = new TextEditingController();
   Icon _searchIcon = new Icon(Icons.search);
   Widget _appBarTitle = new Text('Restaurant');
+  late RestaurantProvider provider;
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +38,15 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
       create: (_) => RestaurantProvider(apiService: ApiService(), type: 'list', restaurant: null),
       child: Consumer<RestaurantProvider>(
         builder: (context, state, _) {
+          provider = state;
           if (state.state == ResultState.Loading) {
             return Center(child: CircularProgressIndicator());
           } else if (state.state == ResultState.HasData) {
             return ListView.builder(
               shrinkWrap: true,
-              itemCount: state.resultList.count,
+              itemCount: state.result.restaurants.length,
               itemBuilder: (context, index) {
-                var restaurant = state.resultList.restaurants[index];
+                var restaurant = state.result.restaurants[index];
                 return CardRestaurant(restaurant: restaurant);
               },
             );
@@ -70,11 +72,18 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
             prefixIcon: new Icon(Icons.search),
             hintText: 'Search...'
           ),
+          onChanged: (value) => {
+            if (value != '') {
+              // Set the provider to show searched restaurant
+              provider.fetchRestaurantSearch(value),
+            }
+          },
         );
       } else {
         this._searchIcon = new Icon(Icons.search);
         this._appBarTitle = new Text('Restaurant');
-        //filteredNames = names;
+        // Set the provider to show all restaurant
+        provider.fetchAllRestaurant();
         _filter.clear();
       }
     });
