@@ -23,19 +23,22 @@ class RestaurantDetailPage extends StatelessWidget {
   }
 
   Widget _buildRestaurantDetails(BuildContext context) {
+    RestaurantProvider _provider;
+
     return ChangeNotifierProvider<RestaurantProvider>(
-      create: (_) => RestaurantProvider(apiService: ApiService(), type: 'detail', restaurant: restaurant),
+      create: (_) => RestaurantProvider(apiService: ApiService(), type: 'detail', id: restaurant.id),
       child: Consumer<RestaurantProvider>(
         builder: (context, state, _) {
+          _provider = state;
           if (state.state == ResultState.Loading) {
             return Center(child: CircularProgressIndicator());
           } else if (state.state == ResultState.HasData) {
             var restaurant = state.result.restaurant;
-            return DetailRestaurant(restaurant: restaurant);
+            return DetailRestaurant(restaurant: restaurant, provider: _provider,);
           } else if (state.state == ResultState.NoData) {
             return Center(child: Text(state.message));
           } else if (state.state == ResultState.Error) {
-            return Center(child: Text(state.message));
+            return Center(child: Text("Tidak ada koneksi Internet."));
           } else {
             return Center(child: Text(''));
           }

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:submission_2/data/api/api_service.dart';
-import 'package:submission_2/data/model/restaurant.dart';
+import 'package:submission_2/data/model/review.dart';
 import 'package:flutter/material.dart';
 
 enum ResultState { Loading, NoData, HasData, Error }
@@ -8,13 +8,13 @@ enum ResultState { Loading, NoData, HasData, Error }
 class RestaurantProvider extends ChangeNotifier {
   final ApiService apiService;
   final String type;
-  final Restaurant? restaurant;
+  final String id;
  
-  RestaurantProvider({required this.apiService, required this.type, required this.restaurant}) {
+  RestaurantProvider({required this.apiService, required this.type, required this.id}) {
     if (type == 'list') {
       fetchAllRestaurant();
     } else if (type == 'detail') {
-      fetchRestaurantDetail(restaurant!);
+      fetchRestaurantDetail(id);
     }
   }
  
@@ -49,11 +49,11 @@ class RestaurantProvider extends ChangeNotifier {
     }
   }
 
-  Future<dynamic> fetchRestaurantDetail(Restaurant restaurant) async {
+  Future<dynamic> fetchRestaurantDetail(String id) async {
     try {
       _state = ResultState.Loading;
       notifyListeners();
-      final restaurantDetail = await apiService.restaurantDetail(restaurant.id);
+      final restaurantDetail = await apiService.restaurantDetail(id);
       _state = ResultState.HasData;
       notifyListeners();
       return _restaurantResult = restaurantDetail;
@@ -78,6 +78,18 @@ class RestaurantProvider extends ChangeNotifier {
         notifyListeners();
         return _restaurantResult = restaurantSearch;
       }
+    } catch (e) {
+      _state = ResultState.Error;
+      notifyListeners();
+      return _message = 'Error --> $e';
+    }
+  }
+
+  Future<dynamic> postReview(Review review) async {
+    try {
+      final response = await apiService.postReview(review);
+
+      if (!response.error) fetchRestaurantDetail(review.id!);
     } catch (e) {
       _state = ResultState.Error;
       notifyListeners();

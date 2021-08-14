@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:submission_2/data/model/restaurant.dart';
+import 'package:submission_2/data/model/review.dart';
+import 'package:submission_2/provider/restaurant_provider.dart';
+import 'package:submission_2/ui/add_review_dialog.dart';
 
 class DetailRestaurant extends StatelessWidget {
   final RestaurantComplete restaurant;
+  final RestaurantProvider provider;
 
-  const DetailRestaurant({required this.restaurant});
+  const DetailRestaurant({required this.restaurant, required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -201,6 +205,101 @@ class DetailRestaurant extends StatelessWidget {
                     },
                   ),
                 ),
+                Divider(color: Colors.grey),
+                // Bagian Review
+                Row(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.chat_bubble,
+                            color: Colors.black26,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text(
+                              'Review',
+                              style: Theme.of(context).textTheme.subtitle2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: TextButton(
+                          style: TextButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Colors.black54,
+                            onSurface: Colors.grey,
+                            textStyle: Theme.of(context).textTheme.subtitle2,
+                          ),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AddReviewDialog(
+                                  provider: provider, id: restaurant.id),
+                            );
+                          },
+                          child: const Text('Tambahkan Review')),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: restaurant.reviews.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      Review review = restaurant.reviews[index];
+                      return Card(
+                          margin: EdgeInsets.all(8),
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 24,
+                                  backgroundColor: Colors.black38,
+                                  child: Text(
+                                    review.name[0],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                      ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          review.name,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          review.date,
+                                          style: TextStyle(
+                                              color: Colors.grey, fontSize: 12),
+                                        ),
+                                        Text(
+                                          review.review,
+                                          maxLines: 5,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ));
+                    }),
+                // Bagian Tombol Add Review
               ],
             ),
           ),

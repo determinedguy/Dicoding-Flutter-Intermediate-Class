@@ -35,7 +35,7 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
 
   Widget _buildRestaurantItem(BuildContext context) {
     return ChangeNotifierProvider<RestaurantProvider>(
-      create: (_) => RestaurantProvider(apiService: ApiService(), type: 'list', restaurant: null),
+      create: (_) => RestaurantProvider(apiService: ApiService(), type: 'list', id: ''),
       child: Consumer<RestaurantProvider>(
         builder: (context, state, _) {
           provider = state;
@@ -53,7 +53,7 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
           } else if (state.state == ResultState.NoData) {
             return Center(child: Text(state.message));
           } else if (state.state == ResultState.Error) {
-            return Center(child: Text(state.message));
+            return Center(child: Text("Tidak ada koneksi Internet."));
           } else {
             return Center(child: Text(''));
           }
