@@ -15,7 +15,8 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
 
   Widget _appBarTitle = new Text('Restaurant');
 
-  RestaurantProvider? provider;
+  late RestaurantProvider provider;
+  // Search error, LateInitializationError: Field 'provider' has not been initialized.
 
   Widget _buildList() {
     return Consumer<RestaurantProvider>(
@@ -49,21 +50,20 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
         this._appBarTitle = new TextField(
           controller: _filter,
           decoration: new InputDecoration(
-            prefixIcon: new Icon(Icons.search),
-            hintText: 'Search...'
-          ),
+              prefixIcon: new Icon(Icons.search), hintText: 'Search...'),
           onChanged: (value) => {
-            if (value != '') {
-              // Set the provider to show searched restaurant
-              provider!.fetchRestaurantSearch(value),
-            }
+            if (value != '')
+              {
+                // Set the provider to show searched restaurant
+                provider.fetchRestaurantSearch(value),
+              }
           },
         );
       } else {
         this._searchIcon = new Icon(Icons.search);
         this._appBarTitle = new Text('Restaurant');
         // Set the provider to show all restaurant
-        provider!.fetchAllRestaurant();
+        provider.fetchAllRestaurant();
         _filter.clear();
       }
     });

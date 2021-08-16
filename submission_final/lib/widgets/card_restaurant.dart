@@ -11,7 +11,7 @@ class CardRestaurant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: primaryColor,
+      color: primaryColor, // Dark Mode Bug
       child: ListTile(
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
