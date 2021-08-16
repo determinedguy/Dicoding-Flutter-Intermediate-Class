@@ -43,6 +43,18 @@ dependencies:
   # The following adds the sqflite module to your application.
   sqflite: ^2.0.0+3
 
+  # The following adds the intl module to your application.
+  intl: ^0.17.0
+
+  # The following adds the Android alarm manager module to your application.
+  android_alarm_manager: ^2.0.0
+
+  # The following adds the local notifications module to your application.
+  flutter_local_notifications: ^5.0.0
+
+  # The following adds the rxdart module to your application.
+  rxdart: ^0.26.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
