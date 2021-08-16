@@ -37,6 +37,12 @@ dependencies:
   # The following adds the provider module to your application.
   provider: ^5.0.0
 
+  # The following adds the shared preference module to your application.
+  shared_preferences: ^2.0.6
+
+  # The following adds the sqflite module to your application.
+  sqflite: ^2.0.0+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
