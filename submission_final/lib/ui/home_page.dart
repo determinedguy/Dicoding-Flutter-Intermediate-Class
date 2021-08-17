@@ -1,3 +1,5 @@
+import 'package:submission_final/data/db/database_helper.dart';
+import 'package:submission_final/provider/database_provider.dart';
 import 'package:submission_final/ui/favorites_page.dart';
 import 'package:submission_final/ui/restaurant_detail_page.dart';
 import 'package:submission_final/ui/restaurant_list_page.dart';
@@ -15,12 +17,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final NotificationHelper _notificationHelper = NotificationHelper();
 
+  static DatabaseProvider databaseProvider = DatabaseProvider(databaseHelper: DatabaseHelper());
+
   int _bottomNavIndex = 0;
   static const String _restaurantText = 'Restaurant';
 
   List<Widget> _listWidget = [
     RestaurantListPage(),
-    FavoritesPage(),
+    FavoritesPage(provider: databaseProvider),
     SettingsPage(),
   ];
 

@@ -7,6 +7,10 @@ import 'package:submission_final/widgets/card_restaurant.dart';
 class FavoritesPage extends StatelessWidget {
   static const String favoritesTitle = 'Favorites';
 
+  final DatabaseProvider provider;
+
+  const FavoritesPage({required this.provider});
+
   Widget _buildList() {
     return Consumer<DatabaseProvider>(
       builder: (context, provider, child) {
