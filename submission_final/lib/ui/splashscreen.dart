@@ -26,7 +26,6 @@ class _SplashScreen extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +34,6 @@ class _SplashScreen extends State<SplashScreen> {
             Icon(
               Icons.food_bank,
               size: 100.0,
-              color: Colors.black26,
             ),
             SizedBox(height: 24.0),
             Text(

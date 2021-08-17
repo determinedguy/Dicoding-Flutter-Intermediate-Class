@@ -43,9 +43,10 @@ ThemeData lightTheme = ThemeData(
   visualDensity: VisualDensity.adaptivePlatformDensity,
   textTheme: myTextTheme,
   appBarTheme: AppBarTheme(
-    textTheme: myTextTheme.apply(bodyColor: Colors.black),
+    textTheme: myTextTheme.apply(bodyColor: Colors.black,),
     elevation: 0,
   ),
+  iconTheme: IconThemeData(color: Colors.black26,),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       primary: secondaryColor,
@@ -72,6 +73,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
     selectedItemColor: darkSecondaryColor,
     unselectedItemColor: Colors.grey,
   ),
+  iconTheme: IconThemeData(color: Colors.white,),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       primary: secondaryColor,

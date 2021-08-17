@@ -41,7 +41,6 @@ class DetailRestaurant extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.location_pin,
-                      color: Colors.black26,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -57,7 +56,6 @@ class DetailRestaurant extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.star,
-                      color: Colors.black26,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -80,7 +78,6 @@ class DetailRestaurant extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.restaurant_menu,
-                      color: Colors.black26,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -145,7 +142,6 @@ class DetailRestaurant extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.local_drink,
-                      color: Colors.black26,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -214,7 +210,6 @@ class DetailRestaurant extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.chat_bubble,
-                            color: Colors.black26,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0),
