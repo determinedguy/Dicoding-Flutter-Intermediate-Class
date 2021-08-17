@@ -17,6 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final NotificationHelper _notificationHelper = NotificationHelper();
 
+  // To solve late-initialized problem, initialize the database provider and add it as a parameter to the favorite page
   static DatabaseProvider databaseProvider = DatabaseProvider(databaseHelper: DatabaseHelper());
 
   int _bottomNavIndex = 0;
