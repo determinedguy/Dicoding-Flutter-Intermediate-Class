@@ -2,23 +2,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:submission_final/data/api/api_service.dart';
 import 'package:submission_final/data/model/restaurant.dart';
 import 'package:submission_final/data/model/review.dart';
-import 'package:submission_final/provider/database_provider.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'restaurant_test.mocks.dart';
 
-@GenerateMocks([DatabaseProvider, ApiService])
+@GenerateMocks([ApiService])
 void main() {
   group('Restaurant Test', () {
     late Restaurant restaurant;
     late RestaurantComplete restaurantComplete;
     late ApiService apiService;
-    late DatabaseProvider databaseProvider;
 
     setUp(() {
       apiService = MockApiService();
-      databaseProvider = MockDatabaseProvider();
       restaurant = Restaurant(
         id: "abc123",
         name: "Restaurant",
@@ -82,15 +79,7 @@ void main() {
       });
 
       expect(await apiService.restaurantDetail(restaurant.id),
-          isA<RestaurantComplete>());
-    });
-
-    test('Should return favorite restaurant', () {
-      when(databaseProvider.databaseHelper.getFavorites()).thenAnswer((realInvocation) {
-        Future<List<Restaurant>> restaurants = [restaurant] as Future<List<Restaurant>>;
-        return restaurants;
-      });
-      expect(databaseProvider.databaseHelper.getFavorites(), isA<Future<List<Restaurant>>>());
+          isA<RestaurantDetail>());
     });
   });
 }
