@@ -16,11 +16,11 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
   Widget _appBarTitle = new Text('Restaurant');
 
   late RestaurantProvider provider;
-  // Search error, LateInitializationError: Field 'provider' has not been initialized.
 
   Widget _buildList() {
     return Consumer<RestaurantProvider>(
       builder: (context, state, _) {
+        provider = state;
         if (state.state == ResultState.Loading) {
           return Center(child: CircularProgressIndicator());
         } else if (state.state == ResultState.HasData) {
@@ -74,7 +74,7 @@ class _RestaurantListPageState extends State<RestaurantListPage> {
     return Scaffold(
       appBar: AppBar(
         title: _appBarTitle,
-        actions: <Widget>[
+        actions: [
           IconButton(
             onPressed: _searchPressed,
             icon: _searchIcon,
