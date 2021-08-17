@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-final Color primaryColor = Color(0xFFFFFFFF);
-final Color secondaryColor = Color(0xFF6B38FB);
+final Color primaryColor = Colors.white;
+final Color secondaryColor = Colors.blueAccent;
 
-final Color darkPrimaryColor = Color(0xFF000000);
-final Color darkSecondaryColor = Color(0xff64ffda);
+final Color darkPrimaryColor = Colors.black;
+final Color darkSecondaryColor = Colors.lightBlueAccent;
 
 final TextTheme myTextTheme = TextTheme(
   headline1: GoogleFonts.merriweather(
@@ -76,7 +76,7 @@ ThemeData darkTheme = ThemeData.dark().copyWith(
   iconTheme: IconThemeData(color: Colors.white,),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      primary: secondaryColor,
+      primary: darkSecondaryColor,
       textStyle: TextStyle(),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
