@@ -1,4 +1,5 @@
 import 'package:submission_final/provider/restaurant_provider.dart';
+import 'package:submission_final/utils/result_state.dart';
 import 'package:submission_final/widgets/detail_restaurant.dart';
 import 'package:submission_final/data/model/restaurant.dart';
 import 'package:submission_final/data/api/api_service.dart';

@@ -6,8 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:submission_final/common/navigation.dart';
 import 'package:submission_final/data/api/api_service.dart';
+import 'package:submission_final/data/db/database_helper.dart';
 import 'package:submission_final/data/model/restaurant.dart';
 import 'package:submission_final/data/preferences/preferences_helper.dart';
+import 'package:submission_final/provider/database_provider.dart';
 import 'package:submission_final/provider/preferences_provider.dart';
 import 'package:submission_final/provider/restaurant_provider.dart';
 import 'package:submission_final/provider/scheduling_provider.dart';
@@ -53,9 +55,9 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        /*ChangeNotifierProvider(
+        ChangeNotifierProvider(
           create: (_) => DatabaseProvider(databaseHelper: DatabaseHelper()),
-        ),*/
+        ),
       ],
       child: Consumer<PreferencesProvider>(
         builder: (context, provider, child) {

@@ -1,3 +1,4 @@
+import 'package:submission_final/ui/favorites_page.dart';
 import 'package:submission_final/ui/restaurant_detail_page.dart';
 import 'package:submission_final/ui/restaurant_list_page.dart';
 import 'package:submission_final/utils/notification_helper.dart';
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _listWidget = [
     RestaurantListPage(),
-    //FavoritePage(),
+    FavoritesPage(),
     SettingsPage(),
   ];
 
@@ -27,6 +28,10 @@ class _HomePageState extends State<HomePage> {
     BottomNavigationBarItem(
       icon: Icon(Icons.food_bank),
       label: _restaurantText,
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.favorite),
+      label: FavoritesPage.favoritesTitle,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.settings),
