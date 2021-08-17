@@ -27,7 +27,7 @@ class DatabaseHelper {
              description TEXT,
              pictureId TEXT,
              city TEXT,
-             rating DECIMAL(2,1),
+             rating DECIMAL(2,1)
            )
         ''');
       },
