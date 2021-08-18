@@ -12,9 +12,9 @@ class RestaurantListPage extends StatefulWidget {
 class _RestaurantListPageState extends State<RestaurantListPage> {
   final TextEditingController _filter = new TextEditingController();
 
-  Icon _searchIcon = new Icon(Icons.search);
+  Icon _searchIcon = Icon(Icons.search);
 
-  Widget _appBarTitle = new Text('Restaurant');
+  Widget _appBarTitle = Text('Restaurant');
 
   late RestaurantProvider provider;
 
