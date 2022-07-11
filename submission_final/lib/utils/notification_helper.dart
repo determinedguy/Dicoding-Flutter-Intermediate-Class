@@ -48,7 +48,8 @@ class NotificationHelper {
     var _channelDescription = "Restaurant's Channel"; 
  
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        _channelId, _channelName, _channelDescription,
+        _channelId, _channelName,
+        channelDescription: _channelDescription,
         importance: Importance.max,
         priority: Priority.high,
         ticker: 'ticker',
