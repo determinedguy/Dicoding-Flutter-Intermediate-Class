@@ -46,8 +46,8 @@ dependencies:
   # The following adds the intl module to your application.
   intl: ^0.17.0
 
-  # The following adds the Android alarm manager module to your application.
-  android_alarm_manager: ^2.0.0
+  # The following adds the Android alarm manager plus module to your application.
+  android_alarm_manager_plus: ^2.0.6
 
   # The following adds the local notifications module to your application.
   flutter_local_notifications: ^9.7.0
